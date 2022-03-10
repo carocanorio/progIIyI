@@ -30,18 +30,34 @@ let curso = [
         descripcion: 'Libros',
         alumnos: 1,
         diasDeCursada: ['Lunes', 'Martes'],
+        alumno: {
+            nombre: 'Caro',
+            apellido: 'Canorio'
+        }
     },
     {
         nombre: 'Geografia',
         descripcion: 'Paises',
         alumnos: 2,
         diasDeCursada: ['Miercoles', 'Jueves'],
+        alumno: {
+            nombre: 'Caro',
+            apellido: 'Canorio'
+        }
     },
     {
         nombre: 'Lengua',
         descripcion: 'Palabras',
         alumnos: 3,
         diasDeCursada: ['Lunes', 'Martes'],
+        alumno: [{
+            nombreAlumno: 'Caro',
+            apellido: 'Canorio'
+        },
+        {
+            nombreAlumno: 'Caro',
+            apellido: 'Canorio'
+        }]
     },
     {
         nombre: 'Historia',
@@ -63,9 +79,16 @@ let curso = [
     },
 ];
 
-console.log(curso[2]);
+//console.log(curso[2]);
 
-console.log(curso[3].nombre);
+//console.log(curso[3].nombre);
 
 curso[1].diasDeCursada.push('Viernes');
+
+console.log(curso[2].alumno[0]);
+
+
+
+
+
 
