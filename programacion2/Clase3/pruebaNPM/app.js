@@ -22,18 +22,18 @@ let porColor = c => {
 
     for (let i = 0; i < autos.lista.length; i++) {
 
-        if (autos.lista[i].color === c) {
+        if (autos.lista[i].color === c.toLowerCase()) {
             resultados.push(autos.lista[i]); 
-        }else{
-            resultados.push('No contamos con autos del color' +c);
         }
-
+    }
+    if (resultados.length == 0) {
+        return 'No tenemos autos del color' + c
     }
 
     return resultados
 }
 
-//console.log(porColor('negro'));
+//console.log(porColor('lila'));
 
 let porMarca = m => {
     
@@ -43,16 +43,16 @@ let porMarca = m => {
 
         if (autos.lista[i].marca === m) {
             arrayDeMarcas.push(autos.lista[i]); 
-        }else{
-            arrayDeMarcas.push('No contamos con autos de la marca' + ' ' + m);
         }
-
+    }
+    if (arrayDeMarcas.length == 0) {
+        return 'No tenemos autos de la marca' + ' ' + m
     }
 
     return arrayDeMarcas
 }
 
-//console.log(porMarca('Volkswagen'));
+//console.log(porMarca('Audi'));
 
 let porAnio = a=> {
     
@@ -62,10 +62,10 @@ let porAnio = a=> {
 
         if (autos.lista[i].anio === a) {
             arrayDeAnios.push(autos.lista[i]); 
-        }else{
-            arrayDeAnios.push('No contamos con autos del anio' + ' ' + a);
         }
-
+    }
+    if (arrayDeAnios.length == 0) {
+       return 'No tenemos autos del anio' + a
     }
 
     return arrayDeAnios
