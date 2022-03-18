@@ -4,17 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-/*Listener de modulos de rutas*/
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const alumnosRouter = require ('./routes/alumnos'); 
+const productsRouter = require('../practica5/routes/product')
 
 var app = express();
 
-/*App.use de rutas*/
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use('/alumnos', alumnosRouter)/*App cuando escuches /alumnos, el prefijo, comunicate con alumnosRouter*/
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,8 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/products', productsRouter); /*Cuando la ruta del request sea products, ejecuto lo que est eretornando productsRouter*/
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
