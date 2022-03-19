@@ -6,7 +6,7 @@ router.get('/', function (req,res) {
     return res.send(autos.lista)
 });
 
-router.get('/:brand', function (req,res) {
+router.get('/marca/:brand', function (req,res) {
     let marcaAuto = req.params.brand;
     let arrayDeMarcas = [];
 
@@ -39,34 +39,41 @@ router.get('/color/:color', function (req,res) {
     return res.send (arrayDeColores);
 });
 
-
-
-router.get('/modelo/:model/:a?', function (req,res) {
+router.get('/modelo/:model/:anio?', function (req,res) {
     
     let modelo = req.params.model;
-    let anio = req.params.a;
+    let anio = req.params.anio
     let arrayDeModelos = [];
-    let arrayModelosyAnios = [];
 
     for (let i = 0; i < autos.lista.length; i++) {
-        if(autos.lista[i].modelo === modelo){
+        if(autos.lista[i].modelo === modelo && anio == undefined){
             arrayDeModelos.push(autos.lista[i])
-        }
-        if (autos.lista[i].modelo === modelo && autos.lista[i].anio >= anio ) {
-            arrayModelosyAnios.push(autos.lista[i])
-        }     
+        }  
     }
+
     if (arrayDeModelos.length == 0) {
         return res.send('No hay autos del modelo '+ modelo)
     }
     
-    return res.send(arrayDeModelos) && res.send(arrayModelosyAnios);
+    return res.send(arrayDeModelos);
 });
 
-router.get('/:anio', function (req,res) {
+router.get('/anio/:year', function (req,res) {
     
-})
+    let anioAuto = req.params.year;
+    let arrayDeAnios = [];
 
+    for (let i = 0; i < autos.lista.length; i++) {
+        if (autos.lista[i].anio == anioAuto) {
+            arrayDeAnios.push(autos.lista[i])
+        }        
+    }
+    if (arrayDeAnios.length == 0) {
+        return res.send('No hay autos del año ' + anioAuto)
+    }
+
+    return res.send(arrayDeAnios);
+});
 
 
 module.exports = router;
