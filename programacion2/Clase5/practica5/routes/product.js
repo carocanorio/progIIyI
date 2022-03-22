@@ -6,7 +6,7 @@ router.get('/', function (req,res) {
     return res.send(autos.lista)
 });
 
-router.get('/:brand', function (req,res) {
+router.get('/marca/:brand', function (req,res) {
     let marcaAuto = req.params.brand;
     let arrayDeMarcas = [];
 
@@ -41,7 +41,7 @@ router.get('/color/:color', function (req,res) {
 
 router.get('/modelo/:model/:a?', function (req,res) {
     let modelo = req.params.model;
-    let anio = req.params.a;
+    let anio = req.params.anio
     let arrayDeModelos = [];
 
     for (let i = 0; i < autos.lista.length; i++) {
@@ -60,21 +60,5 @@ router.get('/modelo/:model/:a?', function (req,res) {
 
 });
 
-router.get('/anio/:year', function (req,res) {
-    let year = req.params.year;
-    let arrayDeAnios = [];
-
-    for (let i = 0; i < autos.lista.length; i++) {
-        if (autos.lista[i].anio == year) {
-            arrayDeAnios.push(autos.lista[i])
-        }    
-    }
-
-    if (arrayDeAnios.length == 0) {
-        return res.send('No hay autos del año ' +year)
-    }
-
-    return res.send(arrayDeAnios)
-});
 
 module.exports = router;
