@@ -60,5 +60,22 @@ router.get('/modelo/:model/:a?', function (req,res) {
 
 });
 
+router.get('/anio/:year', function (req,res) {
+    let year = req.params.year;
+    let arrayDeAnios = [];
+
+    for (let i = 0; i < autos.lista.length; i++) {
+        if (autos.lista[i].anio == year) {
+            arrayDeAnios.push(autos.lista[i])
+        }    
+    }
+
+    if (arrayDeAnios.length == 0) {
+        return res.send('No hay autos del año ' +year)
+    }
+
+    return res.send(arrayDeAnios)
+});
+
 
 module.exports = router;
