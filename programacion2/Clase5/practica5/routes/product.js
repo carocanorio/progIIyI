@@ -1,45 +1,15 @@
 const express = require('express');
 const router = express.Router(); //ejecucion del metodo router de express
-const autos = require('../db/index');
+const autos = require('../db/index'); //importo modulo a requerir
+const productosController = require('../controllers/productController.js');
 
-router.get('/', function (req,res) {
-    return res.send(autos.lista)
-});
+router.get('/', productosController.index);
 
-router.get('/marca/:brand', function (req,res) {
-    let marcaAuto = req.params.brand;
-    let arrayDeMarcas = [];
+router.get('/marca/:brand', productosController.marca);
 
-    for (let i = 0; i < autos.lista.length; i++) {
-        if (autos.lista[i].marca === marcaAuto) {
-            arrayDeMarcas.push(autos.lista[i])
-        }      
-    }
-    if (arrayDeMarcas.length == 0) {
-        return res.send('No hay autos de la marca' +' ' + marcaAuto)
-    }
+router.get('/color/:color', productosController.color);
 
-    return res.send (arrayDeMarcas);
-});
-
-router.get('/color/:color', function (req,res) {
-    
-    let color = req.params.color;
-    let arrayDeColores = [];
-
-    for (let i = 0; i < autos.lista.length; i++) {
-        if (autos.lista[i].color === color) {
-            arrayDeColores.push(autos.lista[i])
-        }      
-    }
-    if (arrayDeColores.length == 0) {
-        return res.send('No hay autos del color '+ color)
-    }
-
-    return res.send (arrayDeColores);
-});
-
-router.get('/modelo/:model/:a?', function (req,res) {
+/*router.get('/modelo/:model/:anio?', function (req,res) {
     let modelo = req.params.model;
     let anio = req.params.anio
     let arrayDeModelos = [];
@@ -58,24 +28,8 @@ router.get('/modelo/:model/:a?', function (req,res) {
         return res.send(arrayDeModelos)
     }
 
-});
+});*/
 
-router.get('/anio/:year', function (req,res) {
-    let year = req.params.year;
-    let arrayDeAnios = [];
-
-    for (let i = 0; i < autos.lista.length; i++) {
-        if (autos.lista[i].anio == year) {
-            arrayDeAnios.push(autos.lista[i])
-        }    
-    }
-
-    if (arrayDeAnios.length == 0) {
-        return res.send('No hay autos del año ' +year)
-    }
-
-    return res.send(arrayDeAnios)
-});
-
+router.get('/anio/:year', productosController.anio);
 
 module.exports = router;
