@@ -2,7 +2,9 @@ const autos = require('../db/index');
 
 const productosControlador = {
     index: function (req,res) {
-        return res.send(autos.lista) //trae la lista de alumnos y lo devuelve al navegador    
+        return res.render('autos', {
+            listaAutos: autos.lista //lleva a la vista 
+        }); 
     },
 
     marca: function (req,res) {
@@ -31,11 +33,14 @@ const productosControlador = {
                 arrayDeColores.push(autos.lista[i])
             }      
         }
-        if (arrayDeColores.length == 0) {
+        if (arrayDeColores.length > 0) {
+            return res.render('autos', {
+                listaAutos: arrayDeColores
+            })
+        }else{
             return res.send('No hay autos del color '+ color)
         }
     
-        return res.send (arrayDeColores);
     },
 
     anio: function (req,res) {
