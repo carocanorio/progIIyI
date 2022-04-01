@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.tituloautos {
+  color: blueviolet;
+}
+
+.footer {
+  color: blue;
+  font-size: 10px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;; 
+}

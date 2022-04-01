@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Document</title>
 </head>
 <body>
     
+    <%- include('./partials/header') %> 
+
     <section>
         
         <% for( let i = 0; i <listaAutos.length ; i++ ) { %>
             <article>
-                <h1>Auto numero <%= i+1 %> </h1>
+                <h1 class="tituloautos">Auto numero <%= i+1 %> </h1>
                     <ul>
                         <li>Marca: <%= listaAutos[i].marca %> </li>
                         <li>Modelo: <%= listaAutos[i].modelo %> </li>
@@ -24,6 +27,6 @@
 
     </section>
 
-
+    <%- include('./partials/footer') %> 
 </body>
 </html>
