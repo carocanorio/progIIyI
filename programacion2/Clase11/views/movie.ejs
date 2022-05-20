@@ -50,13 +50,9 @@
             <li class="li">
               <a href="/movies/id/<%= listaPeliculas[i].id %>"><%= listaPeliculas[i].title %> </a> 
               
-              
-              
-              
-              
-              
-              <!-- <a href="/movies/editMovie/<%= listaPeliculas[i].id %>">Modificar</a>
-             | <a href="/movies/deleteMovie/<%= listaPeliculas[i].id %>">Eliminar</a> -->
+              <!--Crear link hacia movies/editMovie-->
+              <a class='btn' href="/movies/editMovie/<%= listaPeliculas[i].id %>">Editar</a>
+              <a href="/movies/deleteMovie/<%= listaPeliculas[i].id %>">Eliminar</a> 
             </li>
           <% } %>
           
